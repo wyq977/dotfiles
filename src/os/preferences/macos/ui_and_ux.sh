@@ -11,8 +11,8 @@ execute "defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool
          defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true" \
    "Avoid creating '.DS_Store' files on network or USB volumes"
 
-execute "defaults write com.apple.menuextra.battery ShowPercent -string 'NO'" \
-    "Hide battery percentage from the menu bar"
+execute "defaults write com.apple.menuextra.battery ShowPercent -string 'YES'" \
+    "Show battery percentage from the menu bar"
 
 execute "sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true" \
     "Show language menu in the top right corner of the boot screen"
@@ -26,14 +26,8 @@ execute "defaults write com.apple.LaunchServices LSQuarantine -bool false" \
 execute "defaults write com.apple.print.PrintingPrefs 'Quit When Finished' -bool true" \
     "Automatically quit the printer app once the print jobs are completed"
 
-execute "defaults write com.apple.screencapture disable-shadow -bool true" \
-    "Disable shadow in screenshots"
-
 execute "defaults write com.apple.screencapture location -string '$HOME/Desktop'" \
     "Save screenshots to the Desktop"
-
-execute "defaults write com.apple.screencapture show-thumbnail -bool false" \
-    "Do not show thumbnail"
 
 execute "defaults write com.apple.screencapture type -string 'png'" \
     "Save screenshots as PNGs"
@@ -75,10 +69,14 @@ execute "defaults write -g QLPanelAnimationDuration -float 0" \
 execute "defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false" \
     "Disable resume system-wide"
 
-execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string 'Laptop' && \
-         sudo scutil --set ComputerName 'laptop' && \
-         sudo scutil --set HostName 'laptop' && \
-         sudo scutil --set LocalHostName 'laptop'" \
+# Ask for computer name
+ask "Please provide a computer name (small case with underscores): "
+computer_name="$(get_answer)"
+
+execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '$computer_name' && \
+         sudo scutil --set ComputerName '$computer_name' && \
+         sudo scutil --set HostName '$computer_name' && \
+         sudo scutil --set LocalHostName '$computer_name'" \
     "Set computer name"
 
 execute "sudo systemsetup -setrestartfreeze on" \

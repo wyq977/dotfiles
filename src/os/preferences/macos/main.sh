@@ -15,7 +15,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 ./chrome.sh
 ./dock.sh
 ./finder.sh
-./firefox.sh
 ./keyboard.sh
 ./language_and_region.sh
 ./maps.sh
@@ -24,5 +23,4 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 ./terminal.sh
 ./textedit.sh
 ./trackpad.sh
-./transmission.sh
 ./ui_and_ux.sh

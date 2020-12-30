@@ -10,16 +10,16 @@ print_in_purple "\n   App Store\n\n"
 execute "defaults write com.apple.appstore ShowDebugMenu -bool true" \
     "Enable debug menu"
 
-execute "defaults write com.apple.commerce AutoUpdate -bool true" \
-    "Turn on auto-update"
+execute "defaults write com.apple.commerce AutoUpdate -bool false" \
+    "Turn off auto-update"
 
-execute "defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true" \
+execute "defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool false" \
     "Enable automatic update check"
 
-execute "defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1" \
-    "Download newly available updates in background"
+execute "defaults write com.apple.SoftwareUpdate AutomaticDownload -bool false" \
+    "Do not auto-download newly available updates in background"
 
-execute "defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1" \
-    "Install System data files and security updates"
+execute "defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool false" \
+    "Do not auto-install System data files and security updates"
 
 killall "App Store" &> /dev/null

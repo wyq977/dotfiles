@@ -18,9 +18,6 @@ execute "defaults write com.apple.finder _FXShowPosixPathInTitle -bool true" \
 execute "defaults write com.apple.finder DisableAllAnimations -bool true" \
     "Disable all animations"
 
-execute "defaults write com.apple.finder WarnOnEmptyTrash -bool false" \
-    "Disable the warning before emptying the Trash"
-
 execute "defaults write com.apple.finder FXDefaultSearchScope -string 'SCcf'" \
     "Search the current directory by default"
 
