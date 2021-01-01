@@ -48,19 +48,10 @@ get_git_repository_details() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    # Check for no changes in the index.
-    # https://stackoverflow.com/questions/5143795/how-can-i-check-in-a-bash-script-if-my-local-git-repository-has-changes
-
-    if git diff-index --quiet HEAD --; then
-        tmp="$tmp\U2705 no changes"; # + cross mark buttom
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
     # Check for uncommitted changes in the index.
 
     if ! git diff --quiet --ignore-submodules --cached; then
-        tmp="$tmp\U274E uncommitted"; # + cross mark buttom
+        tmp="$tmp+";
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,7 +59,7 @@ get_git_repository_details() {
     # Check for unstaged changes.
 
     if ! git diff-files --quiet --ignore-submodules --; then
-        tmp="$tmp\U2757 unstaged"; # ! red exclamation mark
+        tmp="$tmp!";
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -76,7 +67,7 @@ get_git_repository_details() {
     # Check for untracked files.
 
     if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-        tmp="$tmp\U2753 untracked"; # ? red question mark
+        tmp="$tmp?";
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -84,13 +75,13 @@ get_git_repository_details() {
     # Check for stashed files.
 
     if git rev-parse --verify refs/stash &>/dev/null; then
-        tmp="$tmp\U1F4B0 stashed"; # $ money bag
+        tmp="$tmp$";
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     [ -n "$tmp" ] \
-        && tmp=": $tmp"
+        && tmp=" [$tmp]"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -101,9 +92,7 @@ get_git_repository_details() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    # S
-    # printf "%s" "$1$branchName$tmp"
-    printf "$1$branchName$tmp"
+    printf "%s" "$1$branchName$tmp"
 
 }
 
