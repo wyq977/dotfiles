@@ -17,13 +17,13 @@ print_in_purple "\n   Miscellaneous Tools\n\n"
 
 brew_install "ShellCheck" "shellcheck"
 brew_install "Python code formatter" "black"
-brew_install "Continuum Analytics Miniconda" "miniconda" "homebrew/cask" "cask"
+brew_install "Continuum Analytics Miniconda" "miniconda" "--cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 print_in_purple "\n   Visual Studio Code\n\n"
 
-brew_install "Visual Studio Code" "visual-studio-code" "homebrew/cask" "cask"
+brew_install "Visual Studio Code" "visual-studio-code" "--cask"
 
 # Now VSCode plugins and setting can be synced
 # with github account
@@ -32,14 +32,14 @@ brew_install "Visual Studio Code" "visual-studio-code" "homebrew/cask" "cask"
 
 print_in_purple "\n   Docker and VM\n\n"
 
-brew_install "Docker Desktop" "docker" "homebrew/cask" "cask"
-brew_install "Oracle VirtualBox" "virtualbox" "homebrew/cask" "cask"
+brew_install "Docker Desktop" "docker" "--cask"
+brew_install "Oracle VirtualBox" "virtualbox" "--cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 print_in_purple "\n   SSH\n\n"
 
-brew_install "XQuartz" "xquartz" "homebrew/cask" "cask"
+brew_install "XQuartz" "xquartz" "--cask"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
