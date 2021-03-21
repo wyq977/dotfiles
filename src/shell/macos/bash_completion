@@ -21,7 +21,8 @@ if command -v brew &> /dev/null; then
 
         # Make Bash complete the `g` alias just like it does `git`.
 
-        complete -o default -o nospace -F __git_wrap__git_main g
+        # https://stackoverflow.com/questions/55291632/bash-how-to-simplify-autocompletion-of-custom-created-functions-by-using-the-al
+        complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
 
     fi
 

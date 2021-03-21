@@ -2,6 +2,13 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Need to make sure /opt/homebrew/bin is in PATH, otherwise auto completeion
+# is unable to source the scripts
+
+export PATH=$PATH:/opt/homebrew/bin
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 source_bash_files() {
 
     declare -r CURRENT_DIRECTORY="$(pwd)"

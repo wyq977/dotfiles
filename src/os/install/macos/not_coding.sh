@@ -66,6 +66,7 @@ brew_install "Etcher" "balenaetcher" "--cask"
 
 print_in_purple "\n   Office Related\n\n"
 
+# Always open pdf in tabs
 # defaults write -app Skim AppleWindowTabbingMode -string always
 brew_install "Skim" "skim" "--cask" 
 brew_install "Zotero" "zotero" "--cask"
