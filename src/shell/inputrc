@@ -21,6 +21,16 @@ TAB: menu-complete
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Enable partial match in vi mode.
+# https://stackoverflow.com/a/42953422
+
+set keymap vi-insert
+    "\e[A":history-search-backward
+    "\e[B":history-search-forward
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Disable beeping and window flashing.
 
 set bell-style none
