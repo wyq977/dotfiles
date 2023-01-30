@@ -75,6 +75,9 @@ execute "defaults write com.apple.dock wvous-tl-corner -int 2" \
 execute "defaults write com.apple.dock wvous-bl-corner -int 11" \
     "Set Bottom Left to Launchpad"
 
+execute "defaults write com.apple.dock wvous-br-corner -int 0" \
+    "Set Bottom Right to nothing"
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 killall "Dock" &> /dev/null
