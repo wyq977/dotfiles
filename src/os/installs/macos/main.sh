@@ -17,4 +17,4 @@ brew_install "GitHub CLI" "github/gh/gh"
 brew_install "ImageMagick" "imagemagick"
 brew_install "Visual Studio Code" "visual-studio-code" "--cask"
 brew_install "FFmpeg" "ffmpeg"
-
+brew_install "miniforge" "miniforge" "--cask"
