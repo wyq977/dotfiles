@@ -2,13 +2,6 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Ensure Homebrew is in path
-# see details on subshell
-
-export PATH="/opt/homebrew/bin:$PATH"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 source_bash_files() {
 
     declare -r CURRENT_DIRECTORY="$(pwd)"
