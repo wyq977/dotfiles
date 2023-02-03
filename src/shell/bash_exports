@@ -99,13 +99,6 @@ export PYTHONIOENCODING="UTF-8"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Ensure Homebrew is in path
-# see details on subshell
-
-export PATH="/opt/homebrew/bin:$PATH"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # Add dotfiles binary to PATH
 
 DOTFILES_BIN_DIR="$(dirname $(dirname $(pwd)))/src/bin/"

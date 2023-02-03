@@ -2,6 +2,13 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Ensure Homebrew is in path
+# has to export brew path first, otherwise autocompletion fails
+
+if [[ $(uname -m) == 'arm64' &&  $(uname -s) == 'Darwin' ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
 source_bash_files() {
 
     declare -r CURRENT_DIRECTORY="$(pwd)"
