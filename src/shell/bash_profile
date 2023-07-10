@@ -2,12 +2,20 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Ensure Homebrew is in path
+# Ensure 
+# 1. "brew" is in PATH
+# 2. bash autocompletion works for "brew" itself
+# different from bash_autocompletion (completions for brew-installed programs)
 # has to export brew path first, otherwise autocompletion fails
 
+# the completion file is in "$(brew --prefix 2> /dev/null)/completions/bash/brew"
+# https://github.com/orgs/Homebrew/discussions/4227
+
 if [[ $(uname -m) == 'arm64' &&  $(uname -s) == 'Darwin' ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
+    eval $(/opt/homebrew/bin/brew shellenv)
 fi
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 source_bash_files() {
 
@@ -60,6 +68,16 @@ unset -f source_bash_files
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# TODO: This part will add a half second delay when launching new terminal
+# https://nono.ma/anaconda-conda-slows-down-terminal-apple-silicon-m1-m2
+
+# reset base env might help
+# see https://github.com/conda-forge/miniforge/issues/296
+
+# https://github.com/tartansandal/conda-bash-completion
+
+# source $CONDA_ROOT/etc/profile.d/bash_completion.sh
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -67,7 +85,7 @@ if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "1/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
     else
         export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
     fi
@@ -80,4 +98,4 @@ unset __conda_setup
 # Clear system messages (system copyright notice, the date
 # and time of the last login, the message of the day, etc.).
 
-clear
+# clear
