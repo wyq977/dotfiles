@@ -63,6 +63,12 @@ source_bash_files() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Set lang to en to avoid the error below:
+#   -bash: warning: setlocale: LC_COLLATE: cannot change locale (): No such file or directory
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 source_bash_files
 unset -f source_bash_files
 
