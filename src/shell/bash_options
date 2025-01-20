@@ -8,7 +8,7 @@
 # Enable `vi` editing mode.
 # https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Readline-vi-Mode
 
-set -o emacs
+set -o vi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
