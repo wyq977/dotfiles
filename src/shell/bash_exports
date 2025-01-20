@@ -131,3 +131,6 @@ export PATH="$HOMEBREW_REPOSITORY/opt/openjdk@11/bin:$PATH"
 
 # For compilers to find openjdk@11 you may need to set:
 export CPPFLAGS="-I$HOMEBREW_REPOSITORY/opt/openjdk@11/include"
+
+# export local binary e.g. pipx
+export PATH="$HOME/.local/bin:$PATH"

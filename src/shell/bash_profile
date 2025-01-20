@@ -11,9 +11,9 @@
 # the completion file is in "$(brew --prefix 2> /dev/null)/completions/bash/brew"
 # https://github.com/orgs/Homebrew/discussions/4227
 
-if [[ $(uname -m) == 'arm64' &&  $(uname -s) == 'Darwin' ]]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
-fi
+
+# Do not condition for faster loading
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -61,14 +61,6 @@ source_bash_files() {
 
 }
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Set lang to en to avoid the error below:
-#   -bash: warning: setlocale: LC_COLLATE: cannot change locale (): No such file or directory
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 source_bash_files
 unset -f source_bash_files
 
@@ -84,20 +76,11 @@ unset -f source_bash_files
 
 # source $CONDA_ROOT/etc/profile.d/bash_completion.sh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+
+# Directly source conda.sh for faster loading
+
+. "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
