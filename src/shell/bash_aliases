@@ -31,3 +31,6 @@ alias ll="ls -l"
 alias p="cd ~/projects"
 alias path='printf "%b\n" "${PATH//:/\\n}"'
 alias q="exit"
+
+# Alterantive R consoles 
+alias r="radian"
