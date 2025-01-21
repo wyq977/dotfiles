@@ -56,9 +56,10 @@ export LC_ALL="en_US.UTF-8"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Use custom `less` colors for `man` pages.
+# delay: 7 ms
 
-export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
-export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
+# export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
+# export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -71,9 +72,12 @@ export MANPAGER="less -X"
 # If not set, make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history.
 
-if ! printf "%s" "$PROMPT_COMMAND" | grep "history -a" &> /dev/null; then
-    export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-fi
+# delay: 5 ms
+
+
+# if ! printf "%s" "$PROMPT_COMMAND" | grep "history -a" &> /dev/null; then
+#     export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+# fi
 
 # Remove `update_terminal_cwd` from the `PROMPT_COMMAND`
 # environment variable if it doesn't exist in the current shell.
@@ -88,10 +92,27 @@ fi
 #
 # error everytime the prompt is displayed.
 
-if  printf "%s" "$PROMPT_COMMAND" | grep "update_terminal_cwd" &> /dev/null &&
-    ! command -v update_terminal_cwd &> /dev/null; then
-    export PROMPT_COMMAND="$(printf "%s" "$PROMPT_COMMAND" | sed 's/\(.*\)update_terminal_cwd;*\(.*\)/\1\2/g')"
-fi
+# delay: 3 ms
+
+# if  printf "%s" "$PROMPT_COMMAND" | grep "update_terminal_cwd" &> /dev/null &&
+#     ! command -v update_terminal_cwd &> /dev/null; then
+#     export PROMPT_COMMAND="$(printf "%s" "$PROMPT_COMMAND" | sed 's/\(.*\)update_terminal_cwd;*\(.*\)/\1\2/g')"
+# fi
+
+# Create a empty function to suppress the error message
+
+update_terminal_cwd() { :; }
+# PROMPT_COMMAND="${PROMPT_COMMAND/update_terminal_cwd;}"
+
+# update_terminal_cwd() {
+#     # Identify the directory using a "file:" scheme URL,
+#     # including the host name to disambiguate local vs.
+#     # remote connections. Percent-escape spaces.
+#     local SEARCH=' '
+#     local REPLACE='%20'
+#     local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+#     printf '\e]7;%s\a' "$PWD_URL"
+# }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -114,10 +135,11 @@ export HOMEBREW_NO_INSTALL_UPGRADE=1
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Add dotfiles binary to PATH
+# Add dotfiles binary to PATH () 
+# delay: 7 ms
 
-DOTFILES_BIN_DIR="$(dirname $(dirname $(pwd)))/src/bin/"
-export PATH="$DOTFILES_BIN_DIR:$PATH"
+# DOTFILES_BIN_DIR="$(dirname $(dirname $(pwd)))/src/bin/"
+# export PATH="$DOTFILES_BIN_DIR:$PATH"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -132,5 +154,8 @@ export PATH="$HOMEBREW_REPOSITORY/opt/openjdk@11/bin:$PATH"
 # For compilers to find openjdk@11 you may need to set:
 export CPPFLAGS="-I$HOMEBREW_REPOSITORY/opt/openjdk@11/include"
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # export local binary e.g. pipx
+
 export PATH="$HOME/.local/bin:$PATH"

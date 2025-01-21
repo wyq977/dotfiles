@@ -11,9 +11,13 @@
 # the completion file is in "$(brew --prefix 2> /dev/null)/completions/bash/brew"
 # https://github.com/orgs/Homebrew/discussions/4227
 
+# Replace brew shellenv with direct export for faster loading
+# delay: 27 ms
 
-# Do not condition for faster loading
-eval $(/opt/homebrew/bin/brew shellenv)
+export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_BREW_FILE="/opt/homebrew/bin/brew"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -52,6 +56,12 @@ source_bash_files() {
 
         . "$file"
 
+        # TIMEFORMAT="${FILES_TO_SOURCE[$i]}: %3R s"
+
+        # time . "$file"
+
+		# unset TIMEFORMAT
+
     done
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,9 +87,14 @@ unset -f source_bash_files
 
 
 # Directly source conda.sh for faster loading
+# delay: 1-5 ms
 
 . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
 
+
+# time . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+
+# unset TIMEFORMAT
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
