@@ -13,7 +13,8 @@ set -o vi
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Automatically prepend `cd` to directory names.
-
+# FIXME: Not showing up in RStudio terminal
+#   bash: shopt: autocd: invalid shell option name
 shopt -s autocd
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
