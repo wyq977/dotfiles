@@ -10,7 +10,8 @@ BREW_PREFIX="/opt/homebrew"
 declare BASH_COMPLETION_PATH="$BREW_PREFIX/etc/profile.d/bash_completion.sh"
 
 # Source the bash completion file
-. "$BASH_COMPLETION_PATH"
+# . "$BASH_COMPLETION_PATH"
+. /opt/homebrew/etc/profile.d/bash_completion.sh
 
 # FIXME: Not showing up in RStudio terminal
 #   bash: __git_complete: command not found
@@ -19,3 +20,12 @@ __git_complete g git
 
 # Set the completion directory for compatibility with other bash-completion scripts
 export BASH_COMPLETION_COMPAT_DIR="$BREW_PREFIX/etc/bash_completion.d"
+
+# https://github.com/orgs/Homebrew/discussions/4227
+
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";

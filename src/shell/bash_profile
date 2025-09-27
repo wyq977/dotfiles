@@ -19,6 +19,15 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
 export HOMEBREW_BREW_FILE="/opt/homebrew/bin/brew"
 
+# https://github.com/orgs/Homebrew/discussions/4227
+
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 source_bash_files() {
@@ -97,6 +106,9 @@ unset -f source_bash_files
 # unset TIMEFORMAT
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# perl
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # Clear system messages (system copyright notice, the date
 # and time of the last login, the message of the day, etc.).
