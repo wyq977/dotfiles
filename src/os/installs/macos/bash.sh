@@ -21,7 +21,7 @@ change_default_bash() {
     # Try to get the path of the `Bash`
     # version installed through `Homebrew`.
 
-    brewPrefix="$(brew_prefix)" \
+    brewPrefix="/opt/homebrew" \
         || return 1
 
     pathConfig="PATH=\"$brewPrefix/bin:\$PATH\""
