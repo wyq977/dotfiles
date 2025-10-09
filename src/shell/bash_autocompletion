@@ -16,6 +16,8 @@ declare BASH_COMPLETION_PATH="$BREW_PREFIX/etc/profile.d/bash_completion.sh"
 # FIXME: Not showing up in RStudio terminal
 #   bash: __git_complete: command not found
 # Ensure bash completion works for `git` aliases
+# Manually source the git completion file first
+. "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
 __git_complete g git
 
 # Set the completion directory for compatibility with other bash-completion scripts

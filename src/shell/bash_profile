@@ -108,9 +108,27 @@ unset -f source_bash_files
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # perl
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # Clear system messages (system copyright notice, the date
 # and time of the last login, the message of the day, etc.).
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# R profile
+export R_PROFILE_USER=~/.Rprofile
+
+# Setup venv python
+source ~/mypy/bin/activate
+# # Disable prompt (mypy) does not work
+# export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Set the delay between changing input to 0
+
+hidutil property --set '{"CapsLockDelayOverride":0}' > /dev/null
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # clear
