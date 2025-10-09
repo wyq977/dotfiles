@@ -7,8 +7,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 print_in_purple "\n   Dock\n\n"
 
-execute "defaults write com.apple.dock orientation left" \
-    "Set Dock in left orientation"
+execute "defaults write com.apple.dock orientation bottom" \
+    "Set Dock in bottom orientation"
 
 execute "defaults write com.apple.dock autohide -bool true" \
     "Automatically hide/show the Dock"
@@ -50,7 +50,7 @@ execute "defaults write com.apple.dock show-recents -bool false" \
 execute "defaults write com.apple.dock showhidden -bool true" \
     "Make icons of hidden applications translucent"
 
-execute "defaults write com.apple.dock tilesize -int 60" \
+execute "defaults write com.apple.dock tilesize -int 36" \
     "Set icon size"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
