@@ -33,6 +33,8 @@ alias path='printf "%b\n" "${PATH//:/\\n}"'
 alias q="exit"
 alias p3="~/mypy/bin/python"
 alias latexi="latexindent --silent --overwriteIfDifferent"
+alias code="/opt/homebrew/bin/codium"
+
 
 # Alterantive R consoles 
 alias r="radian"
